@@ -1,47 +1,12 @@
 [
     {
-        "name": "Aiaia",
-        "cargo_weight": 95,
+        "name": "ty",
+        "cargo_weight": 567,
         "is_vip": false
     },
     {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
-    },
-    {
-        "name": "Aiaia",
-        "cargo_weight": 95,
-        "is_vip": false
+        "name": "try",
+        "cargo_weight": 5,
+        "is_vip": true
     }
 ]

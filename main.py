@@ -1,52 +1,83 @@
+import json
 from transport import Client
 from transport import Vehicle
 from transport import Train, Airplane, TransportCompany
 
-"""def sec_menu():
-    pass
+def add_client(): #функция для вывода всех записей
+    name = input("Введите имя клиента: ")
+    vip = False
+    cargo_weight = 0
+    try:
+        cargo_weight = int(input("Введите вес груза: "))
+    except:
+        print("Некорректное значение. Использовано значение по умолчанию")
+    v = input("is vip?(y/n):").lower()
+    if v=='y':
+        vip = True
+    elif v == "n":
+        vip = False
+    else:
+        print("Некорректное значение. Использовано значение по умолчанию")
+    return Client.Client(name, cargo_weight, vip)
 
-def menu(data, num_op): #функция "меню"
-    print("1 - Работа с клиентами\n2 - Работа с транспортом\n3 - Работа с транспортной компанией\n4 - Выход из программы\n")
-    c = int(input("Выберите действие(введите число): ")) #запрашивает действие пользователя в переменную
+def add_transport(): #функция для вывода всех записей
+    try:
+        t = int(input("Введите вид транспорта\n 1-авто 2-поезд 3-самолёт\n"))
+        if(t==1):  
+            try:
+                capacity = int(input("Введите грузоподъёмность: "))
+            except:
+                print("Некорректное значение")
+            transp = Vehicle.Vehicle(capacity)
+        elif(t==2):  
+            try:
+                capacity = int(input("Введите грузоподъёмность: "))
+                number_of_cars = int(input("Введите количество вагонов:"))
+            except:
+                print("Некорректное значение")
+            transp = Train.Train(capacity, number_of_cars)
+        elif(t==3):  
+            try:
+                capacity = int(input("Введите грузоподъёмность: "))
+                number_of_cars = int(input("Введите максимальную высоту подъёма:"))
+            except:
+                print("Некорректное значение")
+            transp = Airplane.Airplane(capacity, number_of_cars)
+        else:
+            print("Некорректное значение")
+    except:
+        print("Некорректное значение")
     
-    if c == 1: #выводит все записи
-        display_all_records(data)
 
-    elif c == 2:#выводит поле записи, id которой ввел пользователь
-        display_one_record(data)
+def menu(company): #функция "меню"
+    c = int(input("=========\n1 - Добавить клиента \n2 - Добавить транспорт\n3 - Распределить грузы \n4 - Вывести список транспорта \n5 - Выход\n"))
+
+    if c == 1: #добавляет клиента
+        add_client()
+
+    elif c == 2:#добавляет транспорт
+        add_transport()
     
-    elif c == 3: #ввод всех данных, запись их в множество и добавление множество в data
-        new_record(data)
+    elif c == 3: #добавляет транспортную компанию
+        company.optimize_cargo_distribution()
         
     elif c == 4: #находится id в файле, после чего запись с нужным id удаляется
-        delete_record(data)
+        with open("transport\\transport.json", "r", encoding="utf-8") as transport:
+            data = json.load(transport)
+        for vehicle in data:
+            print(f"ID: {vehicle['id']}, Грузоподъемность: {vehicle['capacity']}, Загруженность: {vehicle['current_load']}")
     
     elif c == 5: #завершается цикл
-        closing_prog(data, num_op)
+        exit()
         
     else: #при вводе некорректного значения
         print('Введите корректное значение')
 
 def main(): #главная функция #открывается файл json и записывается в data
+    company_name = input("Введите название компании: ")
+    company = TransportCompany.TransportCompany(company_name)
     while True: #цикл повторяется постоянно
-        menu() #запускается функция "меню"""
+        menu(company) #запускается функция "меню"
 
-
-A = Client.Client("Aiaia", 95, False)
-B = Vehicle.Vehicle(35)
-C = TransportCompany.TransportCompany("Akkki")
-C.add_vehicle(B)
-C.add_client(A)
-
-D = Train.Train(123, 45)
-
-C.add_vehicle(D)
-
-
-C.optimize_cargo_distribution()
-
-#B.load_cargo(A)
-#print(B.__str__(), D.__str__())
-
-#for i in C.list_vehicles():
-#    print(i)'''
+if __name__=="__main__":
+    main()

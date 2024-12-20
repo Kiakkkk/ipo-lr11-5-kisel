@@ -1,13 +1,7 @@
 [
     {
-        "id": "a59e4a62",
-        "capacity": 35,
-        "current_load": 0,
-        "client_list": []
-    },
-    {
-        "id": "0704b3f8",
-        "capacity": 123,
+        "id": "ef7b71b9",
+        "capacity": 567,
         "current_load": 0,
         "client_list": []
     }
